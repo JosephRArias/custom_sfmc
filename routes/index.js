@@ -1,9 +1,30 @@
-var express = require('express');
-var router = express.Router();
+"use strict";
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+// Deps
+var activity = require("./activity");
 
-module.exports = router;
+/*
+ * GET home page.
+ */
+exports.index = function(req, res) {
+	if (!req.session.token) {
+		res.render("index", {
+			title: "Unauthenticated",
+			errorMessage: "This app may only be loaded via Salesforce Marketing Cloud"
+		});
+	} else {
+		res.render("index", {
+			title: "Journey Builder Activity",
+			results: activity.logExecuteData
+		});
+	}
+};
+
+exports.login = function(req, res) {
+	console.log("req.body: ", req.body);
+	res.redirect("/");
+};
+
+exports.logout = function(req, res) {
+	req.session.token = "";
+};
