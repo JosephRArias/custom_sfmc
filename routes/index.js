@@ -2,23 +2,15 @@
 
 // Deps
 var activity = require("./customActivity");
-var express = require('express');
-var router = express.Router();
 
 /*
  * GET home page.
  */
 exports.index = function(req, res) {
-	if (!req.session.token) {
-		res.render("index", {
-			title: "Unauthenticated",
-			errorMessage: "This app may only be loaded via Salesforce Marketing Cloud"
-		});
-	} else {
+
 		res.render("index", {
 			title: "Journey Builder Activity"
 		});
-	}
 };
 
 exports.login = function(req, res) {
@@ -29,4 +21,3 @@ exports.login = function(req, res) {
 exports.logout = function(req, res) {
 	req.session.token = "";
 };
-module.exports = router;
