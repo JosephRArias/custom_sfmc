@@ -1,7 +1,7 @@
 'use strict';
 
 // Deps
-var activity = require("./customActivity");
+var activity = require("../js/customActivity");
 
 /*
  * GET home page.
