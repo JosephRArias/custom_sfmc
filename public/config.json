@@ -21,16 +21,11 @@
     },
     
     "configurationArguments": {
+    "applicationExtensionKey": "5a21e8fe-b63a-4a46-aa9a-a19404766154",
       "publish": {
         "url": "https://customsfmc-production.up.railway.app/publish"
       }
     },
-    "wizardSteps": [
-        {
-          "label": "Configuration",
-          "key": "step1"
-        }
-      ],
       "userInterfaces": {
         "configModal": {
           "height": 450,
