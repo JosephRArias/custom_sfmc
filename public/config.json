@@ -19,11 +19,25 @@
         "url": "https://customsfmc-production.up.railway.app/execute"
       }
     },
+    
     "configurationArguments": {
       "publish": {
         "url": "https://customsfmc-production.up.railway.app/publish"
       }
     },
+    "wizardSteps": [
+        {
+          "label": "Configuration",
+          "key": "step1"
+        }
+      ],
+      "userInterfaces": {
+        "configModal": {
+          "height": 450,
+          "width": 650,
+          "fullscreen": false
+        }
+      },
     "copySettings": {
       "allowCopy": true,
       "ignoreArguments": ["eventDefinitionKey"]
