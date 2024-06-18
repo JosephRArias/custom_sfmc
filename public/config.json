@@ -4,7 +4,8 @@
     "description": "Custom Activity Description",
     "metaData": {
       "icon": "images/icon.svg",
-      "category": "Custom"
+      "category": "Custom",
+      "isConfigured": true
     },
     "type": "REST",
     "arguments": {
