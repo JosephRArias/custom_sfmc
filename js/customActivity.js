@@ -1,6 +1,8 @@
-define(["../js/postmonger"], function (Postmonger) {
-    "use strict";
-  
+"use strict";
+
+define(function (require) {
+    var Postmonger = require('postmonger')
+
     var connection = new Postmonger.Session();
     var payload = {};
   
