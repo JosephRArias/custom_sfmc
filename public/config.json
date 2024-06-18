@@ -22,20 +22,9 @@
     },
     
     "configurationArguments": {
-    "applicationExtensionKey": "5a21e8fe-b63a-4a46-aa9a-a19404766154",
+    "applicationExtensionKey": "93687b7b-1a77-47e2-9aee-c1294d5e8f0d",
       "publish": {
         "url": "https://customsfmc-production.up.railway.app/publish"
       }
-    },
-      "userInterfaces": {
-        "configModal": {
-          "height": 450,
-          "width": 650,
-          "fullscreen": false
-        }
-      },
-    "copySettings": {
-      "allowCopy": true,
-      "ignoreArguments": ["eventDefinitionKey"]
     }
   }
