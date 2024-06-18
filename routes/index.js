@@ -1,7 +1,9 @@
-"use strict";
+'use strict';
 
 // Deps
 var activity = require("./activity");
+var express = require('express');
+var router = express.Router();
 
 /*
  * GET home page.
@@ -28,3 +30,4 @@ exports.login = function(req, res) {
 exports.logout = function(req, res) {
 	req.session.token = "";
 };
+module.exports = router;
