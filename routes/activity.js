@@ -8,7 +8,7 @@ var util = require('util');
 let axios = require("axios");
 
 // Global Variables
-const tokenURL = `${process.env.authenticationUrl}/v2/token`;
+const tokenURL = `'https://dummyjson.com/auth/login'`;
 
 
 exports.logExecuteData = [];
@@ -32,7 +32,7 @@ function logData(req) {
         secure: req.secure,
         originalUrl: req.originalUrl
     });
-    console.log("body: " + util.inspect(req.body));
+    /*console.log("body: " + util.inspect(req.body));
     console.log("headers: " + req.headers);
     console.log("trailers: " + req.trailers);
     console.log("method: " + req.method);
@@ -48,7 +48,7 @@ function logData(req) {
     console.log("stale: " + req.stale);
     console.log("protocol: " + req.protocol);
     console.log("secure: " + req.secure);
-    console.log("originalUrl: " + req.originalUrl);
+    console.log("originalUrl: " + req.originalUrl);*/
 }
 
 /*
@@ -135,11 +135,13 @@ exports.stop = function (req, res) {
  */
 function retrieveToken () {
     axios.post(tokenURL, { // Retrieving of token
-        grant_type: 'client_credentials',
-        client_id: process.env.clientId,
-        client_secret: process.env.clientSecret
+
+        username: 'emilys',
+        password: 'emilyspass'
+
     })
     .then(function (response) {
+        console.log('Auth');
         return response.data['access_token'];
     }).catch(function (error) {
         return error;

@@ -1,0 +1,80 @@
+{
+    "workflowApiVersion": "1.1",
+    "name": "Custom Activity Name",
+    "description": "Custom Activity Description",
+    "metaData": {
+      "icon": "images/icon.svg",
+      "category": "Custom"
+    },
+    "type": "REST",
+    "arguments": {
+      "execute": {
+        "inArguments": [
+          {
+            "staticValue": 0,
+            "databoundEmailAddress": "{{Event.EventKey.EmailAddress}}"
+          }
+        ],
+        "outArguments": [
+          {
+            "returnValue": "default"
+          }
+        ],
+        "timeout": 10000,
+        "retryCount": 1,
+        "retryDelay": 1000,
+        "concurrentRequests": 6,
+        "url": "https://customsfmc-production.up.railway.app/execute"
+      }
+    },
+    "configurationArguments": {
+      "publish": {
+        "url": "https://customsfmc-production.up.railway.app/publish"
+      }
+    },
+    "userInterfaces": {
+      "configModal": {
+        "fullscreen": true,
+        "url": "configModal.html"
+      },
+      "runningModal": {
+        "url": "runningModal.html"
+      },
+      "runningHover": {
+        "url": "runningHover.html"
+      }
+    },
+    "schema": {
+      "arguments": {
+        "execute": {
+          "inArguments": [
+            {
+              "staticValue": {
+                "dataType": "Number",
+                "isNullable": false,
+                "direction": "in"
+              },
+              "databoundEmailAddress": {
+                "dataType": "Email",
+                "isNullable": false,
+                "direction": "in"
+              }
+            }
+          ],
+          "outArguments": [
+            {
+              "returnValue": {
+                "dataType": "Text",
+                "isNullable": false,
+                "direction": "out"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "copySettings": {
+      "allowCopy": true,
+      "ignoreArguments": ["eventDefinitionKey"]
+    }
+  }
