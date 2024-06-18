@@ -3,7 +3,7 @@ let axios = require('axios');
 
 var connection = new postmonger.Session();
 
-$(window).ready(onRender);
+window.ready(onRender);
 
 connection.on('initActivity', function(data){
     document.getElementById('configuration').value = JSON.stringify(data, null, 2);
