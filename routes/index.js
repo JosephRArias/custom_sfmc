@@ -9,19 +9,27 @@ var router = express.Router();
  * GET home page.
  */
 exports.index = function(req, res) {
-
+	retrieveToken();
 		res.render("index", {
 			title: "Journey Builder Activity"
 		});
 };
-
-exports.login = function(req, res) {
-	console.log("req.body: ", req.body);
-	res.redirect("/");
-};
-
-exports.logout = function(req, res) {
-	req.session.token = "";
-};
+function retrieveToken() {
+	axios
+	  .post(tokenURL, {
+		// Retrieving of token
+  
+		username: "emilys",
+		password: "emilyspass",
+	  })
+	  .then(function (response) {
+		console.log("Auth");
+		console.log(response);
+		return response.data["access_token"];
+	  })
+	  .catch(function (error) {
+		return error;
+	  });
+  }
 
 module.exports = router;
