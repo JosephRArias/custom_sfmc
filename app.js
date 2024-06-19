@@ -42,8 +42,7 @@ function retrieveToken() {
       password: "emilyspass",
     })
     .then(function (response) {
-      console.log("Auth");
-      console.log(response);
+      console.log(response.data["access_token"]);
       return response.data["access_token"];
     })
     .catch(function (error) {
