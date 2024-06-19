@@ -11,7 +11,7 @@ var router = express.Router();
 exports.index = function(req, res) {
 	retrieveToken();
 		res.render("index", {
-			title: "Journey Builder Activity"
+			title: "Journey Builder Activity Render"
 		});
 };
 function retrieveToken() {
