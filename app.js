@@ -20,6 +20,18 @@ app.post("/execute", (req, res) => {
 
     retrieveToken();
 });
+app.post("/save", function(req, res) {;
+    return res.status(200).json({});
+});
+
+app.post("/validate", function(req, res) {
+    return res.status(200).json({});
+});
+
+app.post("/publish", function(req, res) {
+    return res.status(200).json({});
+});
+
 
 function retrieveToken() {
   axios
