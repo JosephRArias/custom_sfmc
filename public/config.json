@@ -13,7 +13,7 @@
         "inArguments": [
           {
             "ContactKey" : "{{Contact.Key}}",
-            "FirstName" : "{{Contact.Attribute.JourneyEntrySource.FirstName}}",
+            "FirstName" : "Jose",
             "LastName" : "{{Contact.Attribute.JourneyEntrySource.LastName}}"
           }
         ],
