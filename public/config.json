@@ -12,7 +12,7 @@
       "execute": {
         "inArguments": [
           {
-            "contactKey" : "{{Contact.Key}}",
+            "ContactKey" : "{{Contact.Key}}",
             "FirstName" : "{{Contact.Attribute.JourneyEntrySource.FirstName}}",
             "LastName" : "{{Contact.Attribute.JourneyEntrySource.LastName}}"
           }
