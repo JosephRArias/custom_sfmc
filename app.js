@@ -8,6 +8,7 @@ var indexRouter = require("./routes/index");
 var tokenURL = "https://dummyjson.com/auth/login";
 
 var request;
+var eventDefinitionKey;
 
 var app = express();
 
@@ -19,14 +20,13 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 
 app.post("/execute", (req, res) => {
+  console.log("EventDefinitionKey: " + req.eventDefinitionKey);
   request = req.body;
-  console.log(request);
-  console.log(req);
   retrieveToken();
-  console.log('Pase el token');
   getInArgument('FirstName');
 });
 app.post("/save", function (req, res) {
+
   return res.status(200).json({});
 });
 
