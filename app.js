@@ -20,7 +20,6 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 
 app.post("/execute", (req, res) => {
-  console.log("EventDefinitionKey: " + req.eventDefinitionKey);
   request = req.body;
   retrieveToken();
   getInArgument('FirstName');
@@ -60,7 +59,6 @@ function getInArgument(k) {
       for (let i = 0; i < request.inArguments.length; i++) {
           let e = request.inArguments[i];
           if (k in e) {
-            console.log(e[k]);
               return e[k];
           }
       }

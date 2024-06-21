@@ -1,4 +1,4 @@
-/*const Postmonger = require('../js/postmonger');
+const Postmonger = require('../js/postmonger');
 
 const connection = new Postmonger.Session();
 
@@ -30,4 +30,3 @@ document.addEventListener('DOMContentLoaded', () => {
     payload['arguments'].execute.inArguments = [params];
   }
 
-*/
