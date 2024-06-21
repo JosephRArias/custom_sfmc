@@ -13,7 +13,7 @@
         "inArguments": [
           {
             "ContactKey" : "{{Contact.Key}}",
-            "FirstName" : "Jose",
+            "FirstName" : "{{Event.eventDefinitionKey.FirstName}}",
             "LastName" : "{{Contact.Attribute.JourneyEntrySource.LastName}}"
           }
         ],
