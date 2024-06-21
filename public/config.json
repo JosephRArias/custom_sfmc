@@ -17,6 +17,7 @@
             "LastName" : "{{Event.eventDefinitionKey.LastName}}"
           }
         ],
+        "timeout": 10000,
         "url": "https://customsfmc-production.up.railway.app/execute"
       }
     },
@@ -39,6 +40,18 @@
        "inArguments": [
          {
            "FirstName": {
+             "dataType": "Text",
+             "isNullable": false,
+             "access": "Visible",
+             "direction": "In"
+           },
+           "ContactKey": {
+             "dataType": "Text",
+             "isNullable": false,
+             "access": "Visible",
+             "direction": "In"
+           },
+           "LastName": {
              "dataType": "Text",
              "isNullable": false,
              "access": "Visible",
