@@ -14,7 +14,7 @@
           {
             "ContactKey" : "{{Contact.Key}}",
             "FirstName" : "{{Event.eventDefinitionKey.FirstName}}",
-            "LastName" : "{{Contact.Attribute.JourneyEntrySource.LastName}}"
+            "LastName" : "{{Event.eventDefinitionKey.LastName}}"
           }
         ],
         "url": "https://customsfmc-production.up.railway.app/execute"
