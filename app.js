@@ -20,6 +20,8 @@ app.use("/", indexRouter);
 
 app.post("/execute", (req, res) => {
   request = req.body;
+  console.log(request);
+  console.log(req);
   retrieveToken();
   console.log('Pase el token');
   getInArgument('FirstName');
@@ -53,6 +55,7 @@ function retrieveToken() {
     });
 }
 function getInArgument(k) {
+  console.log(request.inArguments);
   if (request && request.inArguments) {
       for (let i = 0; i < request.inArguments.length; i++) {
           let e = request.inArguments[i];

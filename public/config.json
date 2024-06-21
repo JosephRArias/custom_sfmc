@@ -32,5 +32,21 @@
       "validate":{
         "url":"https://customsfmc-production.up.railway.app/validate"
       }
-    }
+    },
+  "schema": {
+   "arguments": {
+     "execute": {
+       "inArguments": [
+         {
+           "FirstName": {
+             "dataType": "Text",
+             "isNullable": false,
+             "access": "Visible",
+             "direction": "In"
+           }
+         }
+       ]
+     }
+   }
   }
+}
