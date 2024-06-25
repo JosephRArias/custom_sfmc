@@ -25,9 +25,6 @@ app.use("/", indexRouter);
 
 app.post("/execute", (req, res) => {
   request = req.body;
-  console.log(tokenURL);
-  console.log(user);
-  console.log(pass);
   retrieveToken();
   getInArgument("IdOT");
   confirmAppointment();
@@ -100,7 +97,7 @@ function confirmAppointment() {
     )
     .then(function (response) {
       console.log('Appointment confirmed!');
-      console.log(response.data["result"])
+      console.log(response.data["result"]);
       return response.data["access_token"];
     })
     .catch(function (error) {
