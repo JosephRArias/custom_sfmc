@@ -10,6 +10,7 @@ var user = process.env.username;
 var pass = process.env.password;
 var appointmentURL = process.env.confirmAppointmentURL;
 var token;
+var IdOT;
 var confirmacion;
 var request;
 var eventDefinitionKey;
@@ -27,7 +28,7 @@ app.post("/execute", (req, res) => {
   request = req.body;
   retrieveToken();
   getInArgument("IdOT");
-  confirmAppointment();
+  confirmAppointment(IdOT);
 });
 app.post("/save", function (req, res) {
   return res.status(200).json({});
@@ -59,7 +60,7 @@ function retrieveToken() {
       }
     )
     .then(function (response) {
-      console.log(response.data["access_token"])
+      console.log(response.data["access_token"]);
       return response.data["access_token"];
     })
     .catch(function (error) {
@@ -72,6 +73,7 @@ function getInArgument(k) {
     for (let i = 0; i < request.inArguments.length; i++) {
       let e = request.inArguments[i];
       if (k in e) {
+        IdOT = e[k];
         return e[k];
       }
     }
@@ -80,12 +82,12 @@ function getInArgument(k) {
   return;
 }
 
-function confirmAppointment() {
+function confirmAppointment(IdOt) {
   axios
     .put(
       appointmentURL,
       {
-        IdOt: "6280824",
+        IdOt: IdOt,
         Confirmacion: "1",
         IdDespacho: "2213858",
       },
@@ -98,6 +100,7 @@ function confirmAppointment() {
     .then(function (response) {
       console.log('Appointment confirmed!');
       console.log(response.data["result"]);
+      confirmacion = response.data["result"];
       return response.data["access_token"];
     })
     .catch(function (error) {
