@@ -100,6 +100,7 @@ function confirmAppointment() {
       return response.data["access_token"];
     })
     .catch(function (error) {
+      console.log(error);
       return error;
     });
 }
