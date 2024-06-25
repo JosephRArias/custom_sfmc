@@ -26,7 +26,7 @@ app.use("/", indexRouter);
 
 app.post("/execute", (req, res) => {
   request = req.body;
-  token = retrieveToken();
+  retrieveToken();
   getInArgument("IdOT");
   confirmAppointment(IdOT);
 });
@@ -60,6 +60,7 @@ function retrieveToken() {
       }
     )
     .then(function (response) {
+      token = response.data["access_token"];
       return response.data["access_token"];
     })
     .catch(function (error) {
