@@ -14,11 +14,14 @@
           {
             "ContactKey" : "{{Contact.Key}}",
             "FirstName" : "{{Event.eventDefinitionKey.FirstName}}",
-            "LastName" : "{{Event.eventDefinitionKey.LastName}}"
+            "LastName" : "{{Event.eventDefinitionKey.LastName}}",
+            "IdOT" : "{{Event.eventDefinitionKey.IdOT}}"
           }
         ],
         "outArguments":[
-          {}
+          {
+            "confirmacionSatisfactoria" : 0
+          }
         ],
         "timeout": 10000,
         "url": "https://customsfmc-production.up.railway.app/execute"
@@ -67,7 +70,15 @@
              "direction": "In"
            }
          }
-       ]
+       ],
+       "outArguments":{
+        "confirmacion" : {
+          "dataType" : "Number",
+          "isNullable" : false,
+          "access" : "Visible",
+          "direction" : "Out"
+        }
+       }
      }
    }
   }

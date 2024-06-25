@@ -10,7 +10,7 @@ var username = process.env.username;
 var password = process.env.password;
 var appointmentURL = process.env.confirmAppointmentURL;
 var token;
-
+var confirmacion;
 var request;
 var eventDefinitionKey;
 
@@ -96,6 +96,7 @@ function confirmAppointment() {
     )
     .then(function (response) {
       console.log('Appointment confirmed!');
+      confirmacion = response.data["result"];
       return response.data["access_token"];
     })
     .catch(function (error) {
