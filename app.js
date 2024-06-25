@@ -25,10 +25,11 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 
 app.post("/execute", (req, res) => {
+  request = req.body;
   token = retrieveToken();
   console.log(token);
-  IdOT = getInArgument("IdOT");
-  confirmAppointment(IdOT);
+  /*IdOT = getInArgument("IdOT");
+  confirmAppointment(IdOT);*/
 });
 app.post("/save", function (req, res) {
   return res.status(200).json({});
