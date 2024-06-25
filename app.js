@@ -25,8 +25,11 @@ app.use("/", indexRouter);
 
 app.post("/execute", (req, res) => {
   request = req.body;
-  token = retrieveToken();
-  console.log(token);
+  console.log(tokenURL);
+  console.log(user);
+  console.log(pass);
+  retrieveToken();
+  getInArgument("IdOT");
   confirmAppointment();
 });
 app.post("/save", function (req, res) {
@@ -59,7 +62,7 @@ function retrieveToken() {
       }
     )
     .then(function (response) {
-      token = response.data["access_token"];
+      console.log(response.data["access_token"])
       return response.data["access_token"];
     })
     .catch(function (error) {
@@ -86,7 +89,7 @@ function confirmAppointment() {
       appointmentURL,
       {
         IdOt: "6280824",
-        Confirmación: "1",
+        Confirmacion: "1",
         IdDespacho: "2213858",
       },
       {
