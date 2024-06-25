@@ -60,7 +60,6 @@ function retrieveToken() {
       }
     )
     .then(function (response) {
-      token = response.data["access_token"];
       return response.data["access_token"];
     })
     .catch(function (error) {
