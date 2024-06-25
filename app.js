@@ -6,8 +6,8 @@ let axios = require("axios");
 
 var indexRouter = require("./routes/index");
 var tokenURL = process.env.authenticationURL;
-var username = process.env.username;
-var password = process.env.password;
+var user = process.env.username;
+var pass = process.env.password;
 var appointmentURL = process.env.confirmAppointmentURL;
 var token;
 var confirmacion;
