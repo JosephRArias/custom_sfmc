@@ -20,7 +20,7 @@
         ],
         "outArguments":[
           {
-            "confirmacionSatisfactoria" : 0
+            "confirmacion" : 0
           }
         ],
         "timeout": 10000,

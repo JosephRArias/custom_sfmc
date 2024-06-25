@@ -96,7 +96,7 @@ function confirmAppointment() {
     )
     .then(function (response) {
       console.log('Appointment confirmed!');
-      confirmacion = response.data["result"];
+      console.log(response.data["result"])
       return response.data["access_token"];
     })
     .catch(function (error) {
