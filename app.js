@@ -25,6 +25,8 @@ app.use("/", indexRouter);
 
 app.post("/execute", (req, res) => {
   request = req.body;
+  console.log(tokenURL);
+  console.log(user);
   token = retrieveToken();
   getInArgument("IdOT");
   confirmAppointment();
