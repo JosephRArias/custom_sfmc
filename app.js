@@ -26,7 +26,8 @@ app.use("/", indexRouter);
 
 app.post("/execute", (req, res) => {
   token = retrieveToken();
-  getInArgument("IdOT");
+  console.log(token);
+  IdOT = getInArgument("IdOT");
   confirmAppointment(IdOT);
 });
 app.post("/save", function (req, res) {
@@ -59,7 +60,6 @@ function retrieveToken() {
       }
     )
     .then(function (response) {
-      console.log(response.data["access_token"]);
       token = response.data["access_token"];
       return response.data["access_token"];
     })
@@ -72,7 +72,6 @@ function getInArgument(k) {
     for (let i = 0; i < request.inArguments.length; i++) {
       let e = request.inArguments[i];
       if (k in e) {
-        IdOT = e[k];
         return e[k];
       }
     }
@@ -82,8 +81,6 @@ function getInArgument(k) {
 }
 
 function confirmAppointment(IdOt) {
-  console.log('Llegue al appointment method');
-  console.log(token);
   axios
     .put(
       appointmentURL,
