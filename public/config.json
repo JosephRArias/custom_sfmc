@@ -17,6 +17,9 @@
             "LastName" : "{{Event.eventDefinitionKey.LastName}}"
           }
         ],
+        "outArguments":[
+          {}
+        ],
         "timeout": 10000,
         "url": "https://customsfmc-production.up.railway.app/execute"
       }
@@ -53,6 +56,12 @@
            },
            "LastName": {
              "dataType": "Text",
+             "isNullable": false,
+             "access": "Visible",
+             "direction": "In"
+           },
+           "IdOT": {
+             "dataType": "Number",
              "isNullable": false,
              "access": "Visible",
              "direction": "In"

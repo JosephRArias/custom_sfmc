@@ -5,7 +5,11 @@ const querystring = require("querystring");
 let axios = require("axios");
 
 var indexRouter = require("./routes/index");
-var tokenURL = "https://dummyjson.com/auth/login";
+var tokenURL = process.env.authenticationURL;
+var username = process.env.username;
+var password = process.env.password;
+var appointmentURL = process.env.confirmAppointmentURL;
+var token;
 
 var request;
 var eventDefinitionKey;
@@ -21,11 +25,11 @@ app.use("/", indexRouter);
 
 app.post("/execute", (req, res) => {
   request = req.body;
-  retrieveToken();
-  getInArgument('FirstName');
+  token = retrieveToken();
+  getInArgument("IdOT");
+  confirmAppointment();
 });
 app.post("/save", function (req, res) {
-
   return res.status(200).json({});
 });
 
@@ -37,15 +41,23 @@ app.post("/publish", function (req, res) {
   return res.status(200).json({});
 });
 
-
 function retrieveToken() {
   axios
-    .post(tokenURL, {
+    .post(
+      tokenURL,
       // Retrieving of token
-
-      username: "emilys",
-      password: "emilyspass",
-    })
+      querystring.stringify({ grant_type: "client_credentials" }),
+      {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          Authorization: "Basic xxxx",
+        },
+        auth: {
+          username: user,
+          password: pass,
+        },
+      }
+    )
     .then(function (response) {
       return response.data["access_token"];
     })
@@ -54,16 +66,40 @@ function retrieveToken() {
     });
 }
 function getInArgument(k) {
-  console.log(request.inArguments);
   if (request && request.inArguments) {
-      for (let i = 0; i < request.inArguments.length; i++) {
-          let e = request.inArguments[i];
-          if (k in e) {
-              return e[k];
-          }
+    for (let i = 0; i < request.inArguments.length; i++) {
+      let e = request.inArguments[i];
+      if (k in e) {
+        idOt = e[k];
+        return e[k];
       }
+    }
   }
   console.log("Unable To Find In Argument: ", k);
   return;
+}
+
+function confirmAppointment() {
+  axios
+    .put(
+      appointmentURL,
+      {
+        IdOt: "6280824",
+        Confirmacion: "1",
+        IdDespacho: "2213858",
+      },
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    )
+    .then(function (response) {
+      console.log('Appointment confirmed!');
+      return response.data["access_token"];
+    })
+    .catch(function (error) {
+      return error;
+    });
 }
 module.exports = app;
