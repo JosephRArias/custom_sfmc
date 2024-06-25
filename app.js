@@ -63,6 +63,7 @@ function retrieveToken() {
       return response.data["access_token"];
     })
     .catch(function (error) {
+      console.log(error);
       return error;
     });
 }
@@ -71,7 +72,6 @@ function getInArgument(k) {
     for (let i = 0; i < request.inArguments.length; i++) {
       let e = request.inArguments[i];
       if (k in e) {
-        idOt = e[k];
         return e[k];
       }
     }
@@ -101,7 +101,6 @@ function confirmAppointment() {
       return response.data["access_token"];
     })
     .catch(function (error) {
-      console.log(error);
       return error;
     });
 }
