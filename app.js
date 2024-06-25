@@ -25,8 +25,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 
 app.post("/execute", (req, res) => {
-  request = req.body;
-  retrieveToken();
+  token = retrieveToken();
   getInArgument("IdOT");
   confirmAppointment(IdOT);
 });
