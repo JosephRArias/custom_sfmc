@@ -1,85 +1,86 @@
 {
-    "workflowApiVersion": "1.1",
-    "name": "Custom Activity Name",
-    "description": "Custom Activity Description",
-    "metaData": {
-      "icon": "images/icon.svg",
-      "category": "Custom",
-      "isConfigured": true
+  "workflowApiVersion": "1.1",
+  "name": "Custom Activity Name",
+  "description": "Custom Activity Description",
+  "metaData": {
+    "icon": "images/icon.svg",
+    "category": "Custom",
+    "isConfigured": true
+  },
+  "type": "REST",
+  "arguments": {
+    "execute": {
+      "inArguments": [
+        {
+          "ContactKey": "{{Contact.Key}}",
+          "FirstName": "{{Event.eventDefinitionKey.FirstName}}",
+          "LastName": "{{Event.eventDefinitionKey.LastName}}",
+          "IdOT": "{{Event.eventDefinitionKey.IdOT}}"
+        }
+      ],
+      "outArguments": [
+        {
+          "confirmacion": 0
+        }
+      ],
+      "timeout": 10000,
+      "url": "https://customsfmc-production.up.railway.app/execute"
+    }
+  },
+  "configurationArguments": {
+    "applicationExtensionKey": "93687b7b-1a77-47e2-9aee-c1294d5e8f0d",
+    "publish": {
+      "url": "https://customsfmc-production.up.railway.app/publish"
     },
-    "type": "REST",
+    "save": {
+      "url": "https://customsfmc-production.up.railway.app/save"
+    },
+    "validate": {
+      "url": "https://customsfmc-production.up.railway.app/validate"
+    }
+  },
+  "schema": {
     "arguments": {
       "execute": {
         "inArguments": [
           {
-            "ContactKey" : "{{Contact.Key}}",
-            "FirstName" : "{{Event.eventDefinitionKey.FirstName}}",
-            "LastName" : "{{Event.eventDefinitionKey.LastName}}",
-            "IdOT" : "{{Event.eventDefinitionKey.IdOT}}"
+            "FirstName": {
+              "dataType": "Text",
+              "isNullable": false,
+              "access": "Visible",
+              "direction": "In"
+            },
+            "ContactKey": {
+              "dataType": "Text",
+              "isNullable": false,
+              "access": "Visible",
+              "direction": "In"
+            },
+            "LastName": {
+              "dataType": "Text",
+              "isNullable": false,
+              "access": "Visible",
+              "direction": "In"
+            },
+            "IdOT": {
+              "dataType": "Number",
+              "isNullable": false,
+              "access": "Visible",
+              "direction": "In"
+            }
           }
         ],
-        "outArguments":[
+        "outArguments": [
           {
-            "confirmacion" : 0
+            "confirmacion": {
+              "dataType": "Number",
+              "isNullable": false,
+              "access": "Visible",
+              "direction": "Out"
+            }
           }
-        ],
-        "timeout": 10000,
-        "url": "https://customsfmc-production.up.railway.app/execute"
+        ]
       }
-    },
-    
-    "configurationArguments": {
-    "applicationExtensionKey": "93687b7b-1a77-47e2-9aee-c1294d5e8f0d",
-      "publish": {
-        "url": "https://customsfmc-production.up.railway.app/publish"
-      },
-      "save": {
-        "url":"https://customsfmc-production.up.railway.app/save"
-      },
-      "validate":{
-        "url":"https://customsfmc-production.up.railway.app/validate"
-      }
-    },
-  "schema": {
-   "arguments": {
-     "execute": {
-       "inArguments": [
-         {
-           "FirstName": {
-             "dataType": "Text",
-             "isNullable": false,
-             "access": "Visible",
-             "direction": "In"
-           },
-           "ContactKey": {
-             "dataType": "Text",
-             "isNullable": false,
-             "access": "Visible",
-             "direction": "In"
-           },
-           "LastName": {
-             "dataType": "Text",
-             "isNullable": false,
-             "access": "Visible",
-             "direction": "In"
-           },
-           "IdOT": {
-             "dataType": "Number",
-             "isNullable": false,
-             "access": "Visible",
-             "direction": "In"
-           }
-         }
-       ],
-       "outArguments":{
-        "confirmacion" : {
-          "dataType" : "Number",
-          "isNullable" : false,
-          "access" : "Visible",
-          "direction" : "Out"
-        }
-       }
-     }
-   }
+    }
   }
 }
