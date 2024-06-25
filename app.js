@@ -82,6 +82,8 @@ function getInArgument(k) {
 }
 
 function confirmAppointment(IdOt) {
+  console.log('Llegue al appointment method');
+  console.log(token);
   axios
     .put(
       appointmentURL,
