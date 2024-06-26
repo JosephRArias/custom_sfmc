@@ -27,7 +27,7 @@ app.use("/", indexRouter);
 app.post("/execute", async (req, res) => {
   request = req.body;
   token = await retrieveToken();
-  console.log("Luego del metodo: " + response.data["access_token"]);
+  console.log("Luego del metodo: " + token);
   /*IdOT = getInArgument("IdOT");
   confirmAppointment(IdOT);*/
 });
@@ -60,13 +60,6 @@ function retrieveToken() {
         },
       }
     )
-    .then(function (response) {
-      console.log("Metodo: " + response.data["access_token"]);
-      return response.data["access_token"];
-    })
-    .catch(function (error) {
-      return error;
-    });
 }
 function getInArgument(k) {
   if (request && request.inArguments) {
