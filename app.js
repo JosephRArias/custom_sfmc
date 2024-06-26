@@ -80,7 +80,6 @@ const getInArgumentRequest = async(inArgument) => {
       let e = request.inArguments[i];
       if ('IdOT' in e) {
         inArgument(e['IdOT']);
-        return e[k];
       }
     }
   }
