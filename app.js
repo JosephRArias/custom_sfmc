@@ -86,8 +86,9 @@ async function retrieveToken() {
     token = res.data["access_token"];
   });
   confirmAppointment(IdOT);
-}
+};
 function getInArgument(k) {
+  console.log(request.inArguments);
   if (request && request.inArguments) {
     for (let i = 0; i < request.inArguments.length; i++) {
       let e = request.inArguments[i];
@@ -96,12 +97,13 @@ function getInArgument(k) {
         return e[k];
       }
     }
+    console.log(IdOT);
     sendPostRequest();
   }
   //confirmAppointment(IdOT);
   console.log("Unable To Find In Argument: ", k);
   return;
-}
+};
 
 function confirmAppointment(IdOt) {
   console.log(token);
