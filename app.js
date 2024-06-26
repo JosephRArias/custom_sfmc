@@ -24,10 +24,10 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 
-app.post("/execute", (req, res) => {
+app.post("/execute", async (req, res) => {
   request = req.body;
-  token = retrieveToken();
-  console.log("Luego del metodo" + token);
+  token = await retrieveToken();
+  console.log("Luego del metodo: " + response.data["access_token"]);
   /*IdOT = getInArgument("IdOT");
   confirmAppointment(IdOT);*/
 });
