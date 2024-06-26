@@ -92,9 +92,7 @@ function getInArgument(k) {
     for (let i = 0; i < request.inArguments.length; i++) {
       let e = request.inArguments[i];
       if (k in e) {
-        console.log(e[k]);
         IdOT = e[k];
-        return e[k];
       }
     }
     sendPostRequest();
