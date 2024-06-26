@@ -26,10 +26,9 @@ app.use("/", indexRouter);
 
 app.post("/execute", async (req, res) => {
   request = req.body;
-  token = await retrieveToken();
-  console.log("Luego del metodo: " + token);
-  /*IdOT = getInArgument("IdOT");
-  confirmAppointment(IdOT);*/
+  await retrieveToken();
+  IdOT = await getInArgument("IdOT");
+  await confirmAppointment(IdOT);
 });
 app.post("/save", function (req, res) {
   return res.status(200).json({});
@@ -44,7 +43,7 @@ app.post("/publish", function (req, res) {
 });
 
 function retrieveToken() {
-  axios
+  const response = axios
     .post(
       tokenURL,
       // Retrieving of token
@@ -59,7 +58,8 @@ function retrieveToken() {
           password: pass,
         },
       }
-    )
+    );
+    token = response.data["access_token"];
 }
 function getInArgument(k) {
   if (request && request.inArguments) {
