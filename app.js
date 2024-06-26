@@ -88,11 +88,11 @@ async function retrieveToken() {
   confirmAppointment(IdOT);
 };
 function getInArgument(k) {
-  console.log(request.inArguments);
   if (request && request.inArguments) {
     for (let i = 0; i < request.inArguments.length; i++) {
       let e = request.inArguments[i];
       if (k in e) {
+        console.log(e[k]);
         IdOT = e[k];
         return e[k];
       }
