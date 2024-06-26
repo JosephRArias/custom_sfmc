@@ -27,6 +27,7 @@ app.use("/", indexRouter);
 app.post("/execute", (req, res) => {
   request = req.body;
   retrieveToken();
+  console.log(token);
 });
 app.post("/save", function (req, res) {
   return res.status(200).json({});
