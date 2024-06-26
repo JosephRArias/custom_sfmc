@@ -62,7 +62,7 @@ const sendPostRequest = async () => {
     })
   } catch (err) {
     // Handle Error Here
-    console.error(err);
+    console.log(err);
   }
 };
 
@@ -104,6 +104,7 @@ function getInArgument(k) {
 }
 
 function confirmAppointment(IdOt) {
+  console.log(token);
   axios
     .put(
       appointmentURL,
