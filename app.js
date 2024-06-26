@@ -32,11 +32,12 @@ app.post("/execute", async (req, res) => {
       sendAppointmentConfirmationRequest((response) => {
         confirmacion = response;
         console.log(confirmacion);
+        return res.status(200).send({confirmacion : confirmacion});
       })
     });
   });
 
-  res.status(200).send({confirmacion : confirmacion});
+  //res.status(200).send({confirmacion : confirmacion});
 });
 app.post("/save", function (req, res) {
   return res.status(200).json({});
@@ -75,7 +76,6 @@ const sendTokenRequest = async (token) => {
   }
 };
 const getInArgumentRequest = async(inArgument) => {
-  console.log('inArgument method!');
   if (request && request.inArguments) {
     for (let i = 0; i < request.inArguments.length; i++) {
       let e = request.inArguments[i];
@@ -90,7 +90,6 @@ const getInArgumentRequest = async(inArgument) => {
 }
 
 const sendAppointmentConfirmationRequest = async(confirmacion) =>{
-  console.log('Appointment method!');
   axios
     .put(
       appointmentURL,
