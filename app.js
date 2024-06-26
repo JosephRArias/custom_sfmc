@@ -59,7 +59,7 @@ const sendPostRequest = async () => {
       confirmAppointment(IdOT);
       //getInArgument("IdOT");
       
-    })
+    });
   } catch (err) {
     // Handle Error Here
     console.log(err);
@@ -97,7 +97,6 @@ function getInArgument(k) {
         return e[k];
       }
     }
-    console.log(IdOT);
     sendPostRequest();
   }
   else{
