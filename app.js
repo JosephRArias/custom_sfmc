@@ -11,6 +11,7 @@ var pass = process.env.password;
 var appointmentURL = process.env.confirmAppointmentURL;
 var token;
 var IdOT;
+var confirmacion;
 var request;
 
 var app = express();
@@ -22,10 +23,19 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 
-app.post("/execute", (req, res) => {
+app.post("/execute", async (req, res) => {
   request = req.body;
-  getInArgument('IdOT');
-  res.send(200, {"confirmacion" : confirmacion})
+  sendTokenRequest((response) => {
+    token = response;
+    getInArgumentRequest((inArgument) => {
+      IdOT = inArgument;
+      sendAppointmentConfirmationRequest((response) => {
+        confirmacion = response;
+      })
+    });
+  });
+
+  res.status(200).send({"confirmacion" : confirmacion});
 });
 app.post("/save", function (req, res) {
   return res.status(200).json({});
@@ -39,7 +49,7 @@ app.post("/publish", function (req, res) {
   return res.status(200).json({});
 });
 
-const sendPostRequest = async () => {
+const sendTokenRequest = async (token) => {
   try {
     const response = await axios.post(
       tokenURL,
@@ -56,17 +66,48 @@ const sendPostRequest = async () => {
         },
       }
     ).then(res => {
-      token = res.data["access_token"];
-      confirmAppointment(IdOT);
-      //getInArgument("IdOT");
-      
-    });
+      token(res.data["access_token"]);
+    })
   } catch (err) {
     // Handle Error Here
     console.log(err);
   }
 };
+const getInArgumentRequest = async(inArgument) => {
+  console.log('inArgument method!');
+  if (request && request.inArguments) {
+    for (let i = 0; i < request.inArguments.length; i++) {
+      let e = request.inArguments[i];
+      if (k in e) {
+        inArgument(e[k]);
+        return e[k];
+      }
+    }
+  }
+  else{
+    return 'IdOT';
+  }
+}
 
+const sendAppointmentConfirmationRequest = async(confirmacion) =>{
+  console.log('Appointment method!');
+  axios
+    .put(
+      appointmentURL,
+      {
+        IdOt: IdOT,
+        Confirmacion: "1",
+        IdDespacho: "2213858"
+      },
+      {
+        headers: {
+          Authorization: "Bearer " + token
+        },
+      }
+    ).then(res=>{
+      confirmacion(res.data["result"]);
+    })
+}
 async function retrieveToken() {
   const response = axios.post(
     tokenURL,
@@ -86,20 +127,21 @@ async function retrieveToken() {
   ).then(res => {
     token = res.data["access_token"];
   });
-  confirmAppointment(IdOT);
 };
-function getInArgument(k) {
+async function getInArgument(k) {
+  console.log('inArgument method!');
   if (request && request.inArguments) {
     for (let i = 0; i < request.inArguments.length; i++) {
       let e = request.inArguments[i];
       if (k in e) {
-        IdOT = e[k];
+        return e[k];
       }
     }
-    sendPostRequest();
+    confirmAppointment(IdOT);
     return;
   }
   else{
+    return 'IdOt';
     console.log("Something wrong");
   }
   //confirmAppointment(IdOT);
@@ -108,6 +150,7 @@ function getInArgument(k) {
 };
 
 function confirmAppointment(IdOt) {
+  console.log('Appointment method!');
   axios
     .put(
       appointmentURL,
