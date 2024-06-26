@@ -78,8 +78,8 @@ const getInArgumentRequest = async(inArgument) => {
   if (request && request.inArguments) {
     for (let i = 0; i < request.inArguments.length; i++) {
       let e = request.inArguments[i];
-      if (k in e) {
-        inArgument(e[k]);
+      if ('IdOT' in e) {
+        inArgument(e['IdOT']);
         return e[k];
       }
     }
