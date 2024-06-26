@@ -100,6 +100,9 @@ function getInArgument(k) {
     console.log(IdOT);
     sendPostRequest();
   }
+  else{
+    console.log("Something wrong");
+  }
   //confirmAppointment(IdOT);
   console.log("Unable To Find In Argument: ", k);
   return;
