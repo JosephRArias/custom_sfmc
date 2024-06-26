@@ -25,6 +25,7 @@ app.use("/", indexRouter);
 app.post("/execute", (req, res) => {
   request = req.body;
   getInArgument('IdOT');
+  res.send(200, {"confirmacion" : confirmacion})
 });
 app.post("/save", function (req, res) {
   return res.status(200).json({});
@@ -125,7 +126,7 @@ function confirmAppointment(IdOt) {
       console.log("Appointment confirmed!");
       console.log(response.data["result"]);
       confirmacion = response.data["result"];
-      return res.send(200, {"confirmacion" : confirmacion});
+      return;
     })
     .catch(function (error) {
       console.log(error);
