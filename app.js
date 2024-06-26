@@ -24,11 +24,11 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 
-app.post("/execute", (req, res) => {
+app.post("/execute", async (req, res) => {
   request = req.body;
-  token = retrieveToken();
-  /*IdOT = getInArgument("IdOT");
-  confirmAppointment(IdOT);*/
+  token = await retrieveToken();
+  
+  
 });
 app.post("/save", function (req, res) {
   return res.status(200).json({});
@@ -42,8 +42,8 @@ app.post("/publish", function (req, res) {
   return res.status(200).json({});
 });
 
-function retrieveToken() {
-  axios
+async function retrieveToken() {
+  const response = axios
     .post(
       tokenURL,
       // Retrieving of token
@@ -58,25 +58,21 @@ function retrieveToken() {
           password: pass,
         },
       }
-    )
-    .then(function (response) {
-      console.log("Metodo: " + response.data["access_token"]);
-      token = response.data["access_token"];
-      return response.data["access_token"];
-    })
-    .catch(function (error) {
-      return error;
-    });
+    );
+    getInArgument("IdOT");
+    return response.data["access_token"];
 }
 function getInArgument(k) {
   if (request && request.inArguments) {
     for (let i = 0; i < request.inArguments.length; i++) {
       let e = request.inArguments[i];
       if (k in e) {
+        IdOT = e[k];
         return e[k];
       }
     }
   }
+  confirmAppointment(IdOT);
   console.log("Unable To Find In Argument: ", k);
   return;
 }
