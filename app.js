@@ -96,8 +96,8 @@ function getInArgument(k) {
         return e[k];
       }
     }
+    sendPostRequest();
   }
-  sendPostRequest();
   //confirmAppointment(IdOT);
   console.log("Unable To Find In Argument: ", k);
   return;
