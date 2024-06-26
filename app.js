@@ -27,8 +27,6 @@ app.use("/", indexRouter);
 app.post("/execute", (req, res) => {
   request = req.body;
   retrieveToken();
-  IdOT = getInArgument("IdOT");
-  confirmAppointment(IdOT);
 });
 app.post("/save", function (req, res) {
   return res.status(200).json({});
@@ -59,6 +57,7 @@ async function retrieveToken() {
     }
   );
   token = response.data["access_token"];
+  IdOT = getInArgument("IdOT");
 }
 function getInArgument(k) {
   if (request && request.inArguments) {
@@ -68,29 +67,30 @@ function getInArgument(k) {
         return e[k];
       }
     }
+  } else {
+    console.log("Unable To Find In Argument: ", k);
+    return;
   }
-  console.log("Unable To Find In Argument: ", k);
-  return;
+  confirmAppointment(IdOT);
 }
 
 async function confirmAppointment(IdOt) {
-  const response = await axios
-    .put(
-      appointmentURL,
-      {
-        IdOt: IdOt,
-        Confirmacion: "1",
-        IdDespacho: "2213858",
+  const response = await axios.put(
+    appointmentURL,
+    {
+      IdOt: IdOt,
+      Confirmacion: "1",
+      IdDespacho: "2213858",
+    },
+    {
+      headers: {
+        Authorization: "Bearer " + token,
       },
-      {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      }
-    );
-    console.log("Appointment confirmed!");
-    console.log(response.data["result"]);
-    confirmacion = response.data["result"];
-    return response.data["access_token"];
+    }
+  );
+  console.log("Appointment confirmed!");
+  console.log(response.data["result"]);
+  confirmacion = response.data["result"];
+  return confirmacion;
 }
 module.exports = app;
