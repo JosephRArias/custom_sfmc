@@ -24,11 +24,11 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 
-app.post("/execute", async (req, res) => {
+app.post("/execute", (req, res) => {
   request = req.body;
-  await retrieveToken();
-  IdOT = await getInArgument("IdOT");
-  await confirmAppointment(IdOT);
+  retrieveToken();
+  IdOT = getInArgument("IdOT");
+  confirmAppointment(IdOT);
 });
 app.post("/save", function (req, res) {
   return res.status(200).json({});
@@ -42,24 +42,23 @@ app.post("/publish", function (req, res) {
   return res.status(200).json({});
 });
 
-function retrieveToken() {
-  const response = axios
-    .post(
-      tokenURL,
-      // Retrieving of token
-      querystring.stringify({ grant_type: "client_credentials" }),
-      {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          Authorization: "Basic xxxx"
-        },
-        auth: {
-          username: user,
-          password: pass,
-        },
-      }
-    );
-    token = response.data["access_token"];
+async function retrieveToken() {
+  const response = await axios.post(
+    tokenURL,
+    // Retrieving of token
+    querystring.stringify({ grant_type: "client_credentials" }),
+    {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        Authorization: "Basic xxxx",
+      },
+      auth: {
+        username: user,
+        password: pass,
+      },
+    }
+  );
+  token = response.data["access_token"];
 }
 function getInArgument(k) {
   if (request && request.inArguments) {
@@ -74,8 +73,8 @@ function getInArgument(k) {
   return;
 }
 
-function confirmAppointment(IdOt) {
-  axios
+async function confirmAppointment(IdOt) {
+  const response = await axios
     .put(
       appointmentURL,
       {
@@ -88,15 +87,10 @@ function confirmAppointment(IdOt) {
           Authorization: "Bearer " + token,
         },
       }
-    )
-    .then(function (response) {
-      console.log('Appointment confirmed!');
-      console.log(response.data["result"]);
-      confirmacion = response.data["result"];
-      return response.data["access_token"];
-    })
-    .catch(function (error) {
-      return error;
-    });
+    );
+    console.log("Appointment confirmed!");
+    console.log(response.data["result"]);
+    confirmacion = response.data["result"];
+    return response.data["access_token"];
 }
 module.exports = app;
