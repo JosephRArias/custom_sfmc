@@ -36,7 +36,7 @@ app.post("/execute", async (req, res) => {
     });
   });
 
-  res.status(200).send({"confirmacion" : confirmacion});
+  res.status(200).send({confirmacion : confirmacion});
 });
 app.post("/save", function (req, res) {
   return res.status(200).json({});
