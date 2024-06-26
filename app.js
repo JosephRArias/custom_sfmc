@@ -107,7 +107,6 @@ function getInArgument(k) {
 };
 
 function confirmAppointment(IdOt) {
-  console.log(token);
   axios
     .put(
       appointmentURL,
@@ -126,6 +125,7 @@ function confirmAppointment(IdOt) {
       console.log("Appointment confirmed!");
       console.log(response.data["result"]);
       confirmacion = response.data["result"];
+      return res.send(200, {"confirmacion" : confirmacion});
     })
     .catch(function (error) {
       console.log(error);
