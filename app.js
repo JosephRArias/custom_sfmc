@@ -96,6 +96,7 @@ function getInArgument(k) {
       }
     }
     sendPostRequest();
+    return;
   }
   else{
     console.log("Something wrong");
