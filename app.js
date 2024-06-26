@@ -31,6 +31,7 @@ app.post("/execute", async (req, res) => {
       IdOT = inArgument;
       sendAppointmentConfirmationRequest((response) => {
         confirmacion = response;
+        console.log(confirmacion);
       })
     });
   });
