@@ -31,7 +31,6 @@ app.post("/execute", async (req, res) => {
       IdOT = inArgument;
       sendAppointmentConfirmationRequest((response) => {
         confirmacion = response;
-        console.log(confirmacion);
         return res.status(200).send({confirmacion : confirmacion});
       })
     });
@@ -107,71 +106,4 @@ const sendAppointmentConfirmationRequest = async(confirmacion) =>{
       confirmacion(res.data["result"]);
     })
 }
-async function retrieveToken() {
-  const response = axios.post(
-    tokenURL,
-    // Retrieving of token
-    querystring.stringify({ grant_type: "client_credentials" }),
-    {
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-        Authorization: "Basic xxxx",
-      },
-      auth: {
-        username: user,
-        password:
-          pass,
-      },
-    }
-  ).then(res => {
-    token = res.data["access_token"];
-  });
-};
-async function getInArgument(k) {
-  console.log('inArgument method!');
-  if (request && request.inArguments) {
-    for (let i = 0; i < request.inArguments.length; i++) {
-      let e = request.inArguments[i];
-      if (k in e) {
-        return e[k];
-      }
-    }
-    confirmAppointment(IdOT);
-    return;
-  }
-  else{
-    return 'IdOt';
-    console.log("Something wrong");
-  }
-  //confirmAppointment(IdOT);
-  console.log("Unable To Find In Argument: ", k);
-  return;
-};
-
-function confirmAppointment(IdOt) {
-  console.log('Appointment method!');
-  axios
-    .put(
-      appointmentURL,
-      {
-        IdOt: IdOt,
-        Confirmacion: "1",
-        IdDespacho: "2213858",
-      },
-      {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      }
-    )
-    .then(function (response) {
-      console.log("Appointment confirmed!");
-      console.log(response.data["result"]);
-      confirmacion = response.data["result"];
-      return;
-    })
-    .catch(function (error) {
-      console.log(error);
-    })
-  }
-  module.exports = app;
+module.exports = app;
