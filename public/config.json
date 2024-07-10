@@ -15,7 +15,7 @@
           "ContactKey": "{{Contact.Key}}",
           "FirstName": "{{Event.eventDefinitionKey.FirstName}}",
           "LastName": "{{Event.eventDefinitionKey.LastName}}",
-          "IdOT": "{{Event.eventDefinitionKey.IdOT}}"
+          "IdOT": "{{Event.eventDefinitionKey.OrdenTrabajo}}"
         }
       ],
       "outArguments": [
