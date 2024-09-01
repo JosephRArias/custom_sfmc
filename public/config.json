@@ -7,7 +7,7 @@
     "category": "Custom",
     "isConfigured": true
   },
-  "type": "REST",
+  "type": "RESTDECISION",
   "arguments": {
     "execute": {
       "inArguments": [
@@ -39,6 +39,29 @@
       "url": "https://customsfmc-production.up.railway.app/validate"
     }
   },
+  "outcomes": [
+    {
+      "arguments": {
+        "branchResult": "buy_item",
+        "some argument": "passed from config.json for buy_item"
+      }
+    },
+    {
+      "arguments": {
+        "branchResult": "sell_item",
+        "some argument": "passed from config.json for sell_item"
+      }
+    },
+    {
+      "arguments": {
+        "branchResult": "hold_item",
+        "some argument": "passed from config.json for hold_item"
+      },
+      "metaData": {
+        "label": "MyCustomLabel"
+      }
+    }
+  ],
   "schema": {
     "arguments": {
       "execute": {
