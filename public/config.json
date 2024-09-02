@@ -21,7 +21,10 @@
           "confirmacion": 0
         }
       ],
-      "timeout": 10000,
+      "timeout": 100000,
+      "retryCount": 3,
+      "retryDelay": 1000,
+      "concurrentRequests": 6,
       "url": "https://customsfmc-production.up.railway.app/execute"
     }
   },
