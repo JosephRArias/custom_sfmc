@@ -56,19 +56,7 @@
       "execute": {
         "inArguments": [
           {
-            "FirstName": {
-              "dataType": "Text",
-              "isNullable": false,
-              "access": "Visible",
-              "direction": "In"
-            },
             "ContactKey": {
-              "dataType": "Text",
-              "isNullable": false,
-              "access": "Visible",
-              "direction": "In"
-            },
-            "LastName": {
               "dataType": "Text",
               "isNullable": false,
               "access": "Visible",
