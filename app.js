@@ -31,9 +31,7 @@ app.post("/execute", async (req, res) => {
       IdOT = inArgument;
       sendAppointmentConfirmationRequest((response) => {
         confirmacion = response;
-        return res
-          .status(200)
-          .send({ confirmacion: confirmacion, branchResult: "confirmada" });
+        return res.status(200).send({ confirmacion: confirmacion });
       });
     });
   });
