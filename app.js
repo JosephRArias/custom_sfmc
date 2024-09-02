@@ -31,8 +31,10 @@ app.post("/execute", async (req, res) => {
       IdOT = inArgument;
       sendAppointmentConfirmationRequest((response) => {
         confirmacion = response;
-        return res.status(200).send({confirmacion : confirmacion});
-      })
+        return res
+          .status(200)
+          .send({ confirmacion: confirmacion, branchResult: "confirmada" });
+      });
     });
   });
 
@@ -52,58 +54,60 @@ app.post("/publish", function (req, res) {
 
 const sendTokenRequest = async (token) => {
   try {
-    const response = await axios.post(
-      tokenURL,
-      // Retrieving of token
-      querystring.stringify({ grant_type: "client_credentials" }),
-      {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          Authorization: "Basic xxxx",
-        },
-        auth: {
-          username: user,
-          password: pass,
-        },
-      }
-    ).then(res => {
-      token(res.data["access_token"]);
-    })
+    const response = await axios
+      .post(
+        tokenURL,
+        // Retrieving of token
+        querystring.stringify({ grant_type: "client_credentials" }),
+        {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            Authorization: "Basic xxxx",
+          },
+          auth: {
+            username: user,
+            password: pass,
+          },
+        }
+      )
+      .then((res) => {
+        token(res.data["access_token"]);
+      });
   } catch (err) {
     // Handle Error Here
     console.log(err);
   }
 };
-const getInArgumentRequest = async(inArgument) => {
+const getInArgumentRequest = async (inArgument) => {
   if (request && request.inArguments) {
     for (let i = 0; i < request.inArguments.length; i++) {
       let e = request.inArguments[i];
-      if ('OrdenTrabajo' in e) {
-        inArgument(e['OrdenTrabajo']);
+      if ("OrdenTrabajo" in e) {
+        inArgument(e["OrdenTrabajo"]);
       }
     }
+  } else {
+    return "OrdenTrabajo";
   }
-  else{
-    return 'OrdenTrabajo';
-  }
-}
+};
 
-const sendAppointmentConfirmationRequest = async(confirmacion) =>{
+const sendAppointmentConfirmationRequest = async (confirmacion) => {
   axios
     .put(
       appointmentURL,
       {
         IdOt: IdOT,
         Confirmacion: "1",
-        IdDespacho: "2213858"
+        IdDespacho: "2213858",
       },
       {
         headers: {
-          Authorization: "Bearer " + token
+          Authorization: "Bearer " + token,
         },
       }
-    ).then(res=>{
+    )
+    .then((res) => {
       confirmacion(res.data["result"]);
-    })
-}
+    });
+};
 module.exports = app;

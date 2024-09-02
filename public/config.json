@@ -1,7 +1,7 @@
 {
   "workflowApiVersion": "1.1",
-  "name": "Custom Activity Name",
-  "description": "Custom Activity Description",
+  "name": "¿Se confirma la visita correctamente?",
+  "description": "Custom Activity para confirmar visita",
   "metaData": {
     "icon": "images/icon.svg",
     "category": "Custom",
@@ -13,8 +13,6 @@
       "inArguments": [
         {
           "ContactKey": "{{Contact.Key}}",
-          "FirstName": "{{Event.eventDefinitionKey.FirstName}}",
-          "LastName": "{{Event.eventDefinitionKey.LastName}}",
           "IdOT": "{{Event.eventDefinitionKey.OrdenTrabajo}}"
         }
       ],
@@ -42,23 +40,14 @@
   "outcomes": [
     {
       "arguments": {
-        "branchResult": "buy_item",
+        "branchResult": "confirmada",
         "some argument": "passed from config.json for buy_item"
       }
     },
     {
       "arguments": {
-        "branchResult": "sell_item",
+        "branchResult": "no confirmada",
         "some argument": "passed from config.json for sell_item"
-      }
-    },
-    {
-      "arguments": {
-        "branchResult": "hold_item",
-        "some argument": "passed from config.json for hold_item"
-      },
-      "metaData": {
-        "label": "MyCustomLabel"
       }
     }
   ],
