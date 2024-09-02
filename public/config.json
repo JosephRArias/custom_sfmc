@@ -1,7 +1,7 @@
 {
   "workflowApiVersion": "1.1",
-  "name": "¿Se confirma la visita correctamente?",
-  "description": "Custom Activity para confirmar visita",
+  "name": "Custom Activity Name",
+  "description": "Custom Activity Description",
   "metaData": {
     "icon": "images/icon.svg",
     "category": "Custom",
@@ -13,6 +13,8 @@
       "inArguments": [
         {
           "ContactKey": "{{Contact.Key}}",
+          "FirstName": "{{Event.eventDefinitionKey.FirstName}}",
+          "LastName": "{{Event.eventDefinitionKey.LastName}}",
           "IdOT": "{{Event.eventDefinitionKey.OrdenTrabajo}}"
         }
       ],
@@ -21,10 +23,7 @@
           "confirmacion": 0
         }
       ],
-      "timeout": 100000,
-      "retryCount": 3,
-      "retryDelay": 1000,
-      "concurrentRequests": 6,
+      "timeout": 10000,
       "url": "https://customsfmc-production.up.railway.app/execute"
     }
   },
@@ -43,14 +42,23 @@
   "outcomes": [
     {
       "arguments": {
-        "branchResult": "confirmada",
+        "branchResult": "buy_item",
         "some argument": "passed from config.json for buy_item"
       }
     },
     {
       "arguments": {
-        "branchResult": "no confirmada",
+        "branchResult": "sell_item",
         "some argument": "passed from config.json for sell_item"
+      }
+    },
+    {
+      "arguments": {
+        "branchResult": "hold_item",
+        "some argument": "passed from config.json for hold_item"
+      },
+      "metaData": {
+        "label": "MyCustomLabel"
       }
     }
   ],
@@ -59,7 +67,19 @@
       "execute": {
         "inArguments": [
           {
+            "FirstName": {
+              "dataType": "Text",
+              "isNullable": false,
+              "access": "Visible",
+              "direction": "In"
+            },
             "ContactKey": {
+              "dataType": "Text",
+              "isNullable": false,
+              "access": "Visible",
+              "direction": "In"
+            },
+            "LastName": {
               "dataType": "Text",
               "isNullable": false,
               "access": "Visible",
