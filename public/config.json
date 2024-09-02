@@ -1,20 +1,18 @@
 {
   "workflowApiVersion": "1.1",
-  "name": "Custom Activity Name",
-  "description": "Custom Activity Description",
+  "name": "¿Se confirma la visita correctamente?",
+  "description": "Custom Activity para confirmar visita",
   "metaData": {
     "icon": "images/icon.svg",
     "category": "Custom",
     "isConfigured": true
   },
-  "type": "REST",
+  "type": "RESTDECISION",
   "arguments": {
     "execute": {
       "inArguments": [
         {
           "ContactKey": "{{Contact.Key}}",
-          "FirstName": "{{Event.eventDefinitionKey.FirstName}}",
-          "LastName": "{{Event.eventDefinitionKey.LastName}}",
           "IdOT": "{{Event.eventDefinitionKey.OrdenTrabajo}}"
         }
       ],
@@ -23,7 +21,10 @@
           "confirmacion": 0
         }
       ],
-      "timeout": 10000,
+      "timeout": 100000,
+      "retryCount": 3,
+      "retryDelay": 1000,
+      "concurrentRequests": 6,
       "url": "https://customsfmc-production.up.railway.app/execute"
     }
   },
@@ -39,24 +40,24 @@
       "url": "https://customsfmc-production.up.railway.app/validate"
     }
   },
+  "outcomes": [
+    {
+      "arguments": {
+        "branchResult": "confirmada"
+      }
+    },
+    {
+      "arguments": {
+        "branchResult": "no confirmada"
+      }
+    }
+  ],
   "schema": {
     "arguments": {
       "execute": {
         "inArguments": [
           {
-            "FirstName": {
-              "dataType": "Text",
-              "isNullable": false,
-              "access": "Visible",
-              "direction": "In"
-            },
             "ContactKey": {
-              "dataType": "Text",
-              "isNullable": false,
-              "access": "Visible",
-              "direction": "In"
-            },
-            "LastName": {
               "dataType": "Text",
               "isNullable": false,
               "access": "Visible",
