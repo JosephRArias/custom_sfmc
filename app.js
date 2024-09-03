@@ -28,15 +28,19 @@ app.post("/execute", async (req, res) => {
   sendTokenRequest((response) => {
     token = response;
     getInArgumentRequest((inArgument) => {
-      console.log(token);
       IdOT = inArgument;
       sendAppointmentConfirmationRequest((response) => {
-        console.log("SendAppointment");
         confirmacion = response;
-        console.log(confirmacion);
-        return res
-          .status(200)
-          .send({ confirmacion: confirmacion, branchResult: "confirmada" });
+        if (confirmacion == 0) {
+          return res.status(200).send({
+            confirmacion: confirmacion,
+            branchResult: "no confirmada",
+          });
+        } else {
+          return res
+            .status(200)
+            .send({ confirmacion: confirmacion, branchResult: "confirmada" });
+        }
       });
     });
   });
