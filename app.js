@@ -24,6 +24,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 
 app.post("/execute", async (req, res) => {
+  console.log("Entre al execute");
   request = req.body;
   sendTokenRequest((response) => {
     token = response;
