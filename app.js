@@ -103,7 +103,7 @@ const sendAppointmentConfirmationRequest = async (confirmacion) => {
     .put(
       appointmentURL,
       {
-        IdOt: IdOT,
+        IdOrden: IdOT,
         Confirmacion: "1",
         IdDespacho: "2213858",
       },
