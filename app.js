@@ -94,7 +94,7 @@ const getInArgumentRequest = async (inArgument) => {
       }
     }
   } else {
-    return "IdOT";
+    return 0;
   }
 };
 
