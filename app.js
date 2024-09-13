@@ -29,6 +29,7 @@ app.post("/execute", async (req, res) => {
     token = response;
     getInArgumentRequest((inArgument) => {
       IdOT = inArgument;
+      console.log(IdOT);
       sendAppointmentConfirmationRequest((response) => {
         confirmacion = response;
         if (confirmacion == 1) {
