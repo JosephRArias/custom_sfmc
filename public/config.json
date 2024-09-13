@@ -13,7 +13,7 @@
       "inArguments": [
         {
           "ContactKey": "{{Contact.Key}}",
-          "IdOT": "{{Contact.Attribute.WA_Unificado_Sends.OrdenTrabajo}}"
+          "IdOT": "{{Contact.Attribute.WA_Unificado_Sends.IdOT}}"
         }
       ],
       "outArguments": [
@@ -22,7 +22,7 @@
         }
       ],
       "timeout": 100000,
-      "retryCount": 3,
+      "retryCount": 6,
       "url": "https://customsfmc-production.up.railway.app/execute"
     }
   },
