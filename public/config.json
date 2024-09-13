@@ -13,7 +13,7 @@
       "inArguments": [
         {
           "ContactKey": "{{Contact.Key}}",
-          "IdOT": "{{Event.eventDefinitionKey.OrdenTrabajo}}"
+          "IdOT": "{{Contact.Attribute.WA_Unificado_Sends.OrdenTrabajo}}"
         }
       ],
       "outArguments": [
