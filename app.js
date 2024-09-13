@@ -114,6 +114,7 @@ const sendAppointmentConfirmationRequest = async (confirmacion) => {
       }
     )
     .then((res) => {
+      console.log(res);
       confirmacion(res.data["result"]);
     });
 };
