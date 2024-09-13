@@ -13,7 +13,7 @@
       "inArguments": [
         {
           "ContactKey": "{{Contact.Key}}",
-          "IdOT": "{{Event.eventDefinitionKey.IdOT}}"
+          "IdOT": "{{Event.eventDefinitionKey.OrdenTrabajo}}"
         }
       ],
       "outArguments": [

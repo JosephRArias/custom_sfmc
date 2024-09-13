@@ -29,7 +29,7 @@ app.post("/execute", async (req, res) => {
     token = response;
     getInArgumentRequest((inArgument) => {
       IdOT = inArgument;
-      console.log(IdOT);
+      console.log("Argumento: " + IdOT);
       sendAppointmentConfirmationRequest((response) => {
         confirmacion = response;
         if (confirmacion == 1) {
@@ -90,12 +90,12 @@ const getInArgumentRequest = async (inArgument) => {
   if (request && request.inArguments) {
     for (let i = 0; i < request.inArguments.length; i++) {
       let e = request.inArguments[i];
-      if ("IdOT" in e) {
-        inArgument(e["IdOT"]);
+      if ("OrdenTrabajo" in e) {
+        inArgument(e["OrdenTrabajo"]);
       }
     }
   } else {
-    return 0;
+    inArgument(0);
   }
 };
 
