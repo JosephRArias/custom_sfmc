@@ -62,7 +62,7 @@
               "direction": "In"
             },
             "IdOT": {
-              "dataType": "Number",
+              "dataType": "Text",
               "isNullable": false,
               "access": "Visible",
               "direction": "In"
