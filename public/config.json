@@ -13,7 +13,9 @@
       "inArguments": [
         {
           "ContactKey": "{{Contact.Key}}",
-          "IdOT": "{{Contact.Attribute.\"Confirmaciones_Test\".\"WA_Unificado_Sends\".\"IdOT\"}}"
+          "IdOT": "{{Contact.Attribute.\"Confirmaciones_Test\".\"WA_Unificado_Sends\".IdOT}}",
+          "FirstName": "{{Contact.Attribute.\"Confirmaciones_Test\".\"WA_Unificado_Sends\".Nombre}}",
+          "OrdenTrabajo": "{{Contact.Attribute.\"Confirmaciones_Test\".\"WA_Unificado_Sends\".OrdenTrabajo}}"
         }
       ],
       "outArguments": [
@@ -62,6 +64,18 @@
               "direction": "In"
             },
             "IdOT": {
+              "dataType": "Text",
+              "isNullable": false,
+              "access": "Visible",
+              "direction": "In"
+            },
+            "FirstName": {
+              "dataType": "Text",
+              "isNullable": false,
+              "access": "Visible",
+              "direction": "In"
+            },
+            "OrdenTrabajo": {
               "dataType": "Text",
               "isNullable": false,
               "access": "Visible",
