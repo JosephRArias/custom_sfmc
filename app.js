@@ -92,7 +92,7 @@ const getInArgumentRequest = async (inArgument) => {
     for (let i = 0; i < request.inArguments.length; i++) {
       let e = request.inArguments[i];
       console.log("Argument: " + e["OrdenTrabajo"]);
-      console.log("Key: " + e["Contact.Key"]);
+      console.log("Key: " + e["ContactKey"]);
       if ("OrdenTrabajo" in e) {
         inArgument(e["OrdenTrabajo"]);
       }
