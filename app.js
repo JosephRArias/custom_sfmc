@@ -25,12 +25,11 @@ app.use("/", indexRouter);
 
 app.post("/execute", async (req, res) => {
   request = req.body;
+  console.log(request);
   sendTokenRequest((response) => {
-    console.log("Token: " + response);
     token = response;
     getInArgumentRequest((inArgument) => {
       IdOT = inArgument;
-      console.log("Argumento: " + IdOT);
       sendAppointmentConfirmationRequest((response) => {
         confirmacion = response;
         if (confirmacion == 1) {
@@ -91,8 +90,6 @@ const getInArgumentRequest = async (inArgument) => {
   if (request && request.inArguments) {
     for (let i = 0; i < request.inArguments.length; i++) {
       let e = request.inArguments[i];
-      console.log("Argument: " + e["IdOT"]);
-      console.log("Key: " + e["ContactKey"]);
       if ("IdOT" in e && e["IdOT"] != undefined) {
         inArgument(e["IdOT"]);
       }
@@ -103,8 +100,6 @@ const getInArgumentRequest = async (inArgument) => {
 };
 
 const sendAppointmentConfirmationRequest = async (confirmacion) => {
-  console.log("Confirmacion");
-  console.log("OT: " + IdOT);
   axios
     .put(
       appointmentURL,
@@ -120,7 +115,6 @@ const sendAppointmentConfirmationRequest = async (confirmacion) => {
       }
     )
     .then((res) => {
-      console.log(res);
       confirmacion(res.data["result"]);
     });
 };
