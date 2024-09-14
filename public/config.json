@@ -13,7 +13,7 @@
       "inArguments": [
         {
           "ContactKey": "{{Contact.Key}}",
-          "IdOT": "{{Contact.Attribute."Confirmaciones_Test"."WA_Unificado_Sends".IdOT}}"
+          "IdOT": "{{Contact.Attribute.Confirmaciones_Test.WA_Unificado_Sends.IdOT}}"
         }
       ],
       "outArguments": [
