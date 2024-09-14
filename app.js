@@ -91,7 +91,8 @@ const getInArgumentRequest = async (inArgument) => {
   if (request && request.inArguments) {
     for (let i = 0; i < request.inArguments.length; i++) {
       let e = request.inArguments[i];
-      console.log("Argument: " + e);
+      console.log("Argument: " + e["OrdenTrabajo"]);
+      console.log("Key: " + e["Contact.Key"]);
       if ("OrdenTrabajo" in e) {
         inArgument(e["OrdenTrabajo"]);
       }
@@ -102,6 +103,8 @@ const getInArgumentRequest = async (inArgument) => {
 };
 
 const sendAppointmentConfirmationRequest = async (confirmacion) => {
+  Console.log("Confirmacion");
+  Console.log("OT: " + IdOT);
   axios
     .put(
       appointmentURL,
