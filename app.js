@@ -103,8 +103,8 @@ const getInArgumentRequest = async (inArgument) => {
 };
 
 const sendAppointmentConfirmationRequest = async (confirmacion) => {
-  Console.log("Confirmacion");
-  Console.log("OT: " + IdOT);
+  console.log("Confirmacion");
+  console.log("OT: " + IdOT);
   axios
     .put(
       appointmentURL,
