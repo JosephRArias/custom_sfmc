@@ -13,75 +13,73 @@
       "inArguments": [
         {
           "ContactKey": "{{Contact.Key}}",
-          "IdOT": "{{Contact.Attribute.\"WA_Unificado_Sends"\.IdOT
-        }"
-      }
+          "IdOT": "{{Contact.Attribute.\\"WA_Unificado_Sends"\\.IdOT}}"
+        }
+      ],
+      "outArguments": [
+        {
+          "confirmacion": 0
+        }
+      ],
+      "timeout": 100000,
+      "retryCount": 6,
+      "url": "https://customsfmc-production.up.railway.app/execute"
     }
-  ],
-  "outArguments": [
+  },
+  "configurationArguments": {
+    "applicationExtensionKey": "61defa1a-0a63-4f8f-b81c-5d4f5aa1d13e",
+    "publish": {
+      "url": "https://customsfmc-production.up.railway.app/publish"
+    },
+    "save": {
+      "url": "https://customsfmc-production.up.railway.app/save"
+    },
+    "validate": {
+      "url": "https://customsfmc-production.up.railway.app/validate"
+    }
+  },
+  "outcomes": [
     {
-      "confirmacion": 0
+      "arguments": {
+        "branchResult": "confirmada"
+      }
+    },
+    {
+      "arguments": {
+        "branchResult": "no confirmada"
+      }
     }
   ],
-  "timeout": 100000,
-  "retryCount": 6,
-  "url": "https://customsfmc-production.up.railway.app/execute"
-}
-},
-"configurationArguments": {
-"applicationExtensionKey": "61defa1a-0a63-4f8f-b81c-5d4f5aa1d13e",
-"publish": {
-  "url": "https://customsfmc-production.up.railway.app/publish"
-},
-"save": {
-  "url": "https://customsfmc-production.up.railway.app/save"
-},
-"validate": {
-  "url": "https://customsfmc-production.up.railway.app/validate"
-}
-},
-"outcomes": [
-{
-  "arguments": {
-    "branchResult": "confirmada"
-  }
-},
-{
-  "arguments": {
-    "branchResult": "no confirmada"
-  }
-}
-],
-"schema": {
-"arguments": {
-  "execute": {
-    "inArguments": [
-      {
-        "ContactKey": {
-          "dataType": "Text",
-          "isNullable": false,
-          "access": "Visible",
-          "direction": "In"
-        },
-        "IdOT": {
-          "dataType": "Number",
-          "isNullable": false,
-          "access": "Visible",
-          "direction": "In"
-        }
+  "schema": {
+    "arguments": {
+      "execute": {
+        "inArguments": [
+          {
+            "ContactKey": {
+              "dataType": "Text",
+              "isNullable": false,
+              "access": "Visible",
+              "direction": "In"
+            },
+            "IdOT": {
+              "dataType": "Number",
+              "isNullable": false,
+              "access": "Visible",
+              "direction": "In"
+            }
+          }
+        ],
+        "outArguments": [
+          {
+            "confirmacion": {
+              "dataType": "Number",
+              "isNullable": false,
+              "access": "Visible",
+              "direction": "Out"
+            }
+          }
+        ]
       }
-    ],
-    "outArguments": [
-      {
-        "confirmacion": {
-          "dataType": "Number",
-          "isNullable": false,
-          "access": "Visible",
-          "direction": "Out"
-        }
-      }
-    ]
+    }
   }
-}
-}
 }

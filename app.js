@@ -25,7 +25,9 @@ app.use("/", indexRouter);
 
 app.post("/execute", async (req, res) => {
   request = req.body;
-  console.log(request);
+  const inArguments = req.body.inArguments[1];
+  const dataExtensionField = inArguments.IdOT;
+  console.log(dataExtensionField);
   sendTokenRequest((response) => {
     console.log("Token: " + response);
     token = response;
