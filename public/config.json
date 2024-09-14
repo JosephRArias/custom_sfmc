@@ -13,7 +13,7 @@
       "inArguments": [
         {
           "ContactKey": "{{Contact.Key}}",
-          "IdOT": "{{Contact.Attribute.Confirmaciones_Test.IdOT}}"
+          "IdOT": "{{Contact.Attribute./"Confirmaciones_Test"/.IdOT}}"
         }
       ],
       "outArguments": [

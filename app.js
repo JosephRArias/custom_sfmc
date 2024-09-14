@@ -26,6 +26,7 @@ app.use("/", indexRouter);
 app.post("/execute", async (req, res) => {
   request = req.body;
   sendTokenRequest((response) => {
+    console.log("Token: " + response);
     token = response;
     getInArgumentRequest((inArgument) => {
       IdOT = inArgument;
@@ -90,6 +91,7 @@ const getInArgumentRequest = async (inArgument) => {
   if (request && request.inArguments) {
     for (let i = 0; i < request.inArguments.length; i++) {
       let e = request.inArguments[i];
+      console.log("Argument: " + e);
       if ("OrdenTrabajo" in e) {
         inArgument(e["OrdenTrabajo"]);
       }
