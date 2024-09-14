@@ -13,7 +13,7 @@
       "inArguments": [
         {
           "ContactKey": "{{Contact.Key}}",
-          "IdOT": "{{Event.\"DEAudience-afe41ef4-805b-4591-0fa1-4a6d02ff02cb\".IdOT}}"
+          "IdOT": "{{Contact.Attribute.\"Contacts\".\"WA_Unificado_Sends\".\"IdOT\"}}"
         }
       ],
       "outArguments": [
