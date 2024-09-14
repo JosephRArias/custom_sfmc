@@ -25,9 +25,6 @@ app.use("/", indexRouter);
 
 app.post("/execute", async (req, res) => {
   request = req.body;
-  const inArguments = req.body.inArguments[1];
-  const dataExtensionField = inArguments.IdOT;
-  console.log(dataExtensionField);
   sendTokenRequest((response) => {
     console.log("Token: " + response);
     token = response;
@@ -94,10 +91,10 @@ const getInArgumentRequest = async (inArgument) => {
   if (request && request.inArguments) {
     for (let i = 0; i < request.inArguments.length; i++) {
       let e = request.inArguments[i];
-      console.log("Argument: " + e["OrdenTrabajo"]);
+      console.log("Argument: " + e["IdOT"]);
       console.log("Key: " + e["ContactKey"]);
-      if ("OrdenTrabajo" in e && e["OrdenTrabajo"] != undefined) {
-        inArgument(e["OrdenTrabajo"]);
+      if ("IdOT" in e && e["IdOT"] != undefined) {
+        inArgument(e["IdOT"]);
       }
     }
   } else {
