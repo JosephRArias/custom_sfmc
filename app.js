@@ -25,6 +25,7 @@ app.use("/", indexRouter);
 
 app.post("/execute", async (req, res) => {
   request = req.body;
+  console.log(request);
   sendTokenRequest((response) => {
     console.log("Token: " + response);
     token = response;
@@ -93,7 +94,7 @@ const getInArgumentRequest = async (inArgument) => {
       let e = request.inArguments[i];
       console.log("Argument: " + e["OrdenTrabajo"]);
       console.log("Key: " + e["ContactKey"]);
-      if ("OrdenTrabajo" in e) {
+      if ("OrdenTrabajo" in e && e["OrdenTrabajo"] != undefined) {
         inArgument(e["OrdenTrabajo"]);
       }
     }
