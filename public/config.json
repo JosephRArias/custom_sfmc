@@ -13,9 +13,7 @@
       "inArguments": [
         {
           "ContactKey": "{{Contact.Key}}",
-          "IdOT": "{{Contact.Attribute.\"WA_Unificado_Sends\".IdOT}}",
-          "FirstName": "{{Contact.Attribute.\"WA_Unificado_Sends\".Nombre}}",
-          "OrdenTrabajo": "{{Contact.Attribute.\"WA_Unificado_Sends\".OrdenTrabajo}}"
+          "OrdenTrabajo": "{{Contact.Attribute.\"Confirmaciones API\".OrdenTrabajo}}"
         }
       ],
       "outArguments": [
@@ -58,18 +56,6 @@
         "inArguments": [
           {
             "ContactKey": {
-              "dataType": "Text",
-              "isNullable": false,
-              "access": "Visible",
-              "direction": "In"
-            },
-            "IdOT": {
-              "dataType": "Text",
-              "isNullable": false,
-              "access": "Visible",
-              "direction": "In"
-            },
-            "FirstName": {
               "dataType": "Text",
               "isNullable": false,
               "access": "Visible",

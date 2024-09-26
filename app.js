@@ -45,8 +45,6 @@ app.post("/execute", async (req, res) => {
       });
     });
   });
-
-  //res.status(200).send({confirmacion : confirmacion});
 });
 app.post("/save", function (req, res) {
   return res.status(200).json({});
@@ -90,8 +88,8 @@ const getInArgumentRequest = async (inArgument) => {
   if (request && request.inArguments) {
     for (let i = 0; i < request.inArguments.length; i++) {
       let e = request.inArguments[i];
-      if ("IdOT" in e && e["IdOT"] != undefined) {
-        inArgument(e["IdOT"]);
+      if ("OrdenTrabajo" in e && e["OrdenTrabajo"] != undefined) {
+        inArgument(e["OrdenTrabajo"]);
       }
     }
   } else {
