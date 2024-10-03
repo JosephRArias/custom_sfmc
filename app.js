@@ -25,14 +25,12 @@ app.use("/", indexRouter);
 
 app.post("/execute", async (req, res) => {
   request = req.body;
-  console.log(request);
   sendTokenRequest((response) => {
     token = response;
     getInArgumentRequest((inArgument) => {
       IdOT = inArgument;
       sendAppointmentConfirmationRequest((response) => {
         confirmacion = response;
-        console.log(response);
         if (confirmacion == 1) {
           return res.status(200).send({
             confirmacion: confirmacion,
@@ -114,6 +112,7 @@ const sendAppointmentConfirmationRequest = async (confirmacion) => {
       }
     )
     .then((res) => {
+      console.log(res.data);
       confirmacion(res.data["result"]);
     });
 };
