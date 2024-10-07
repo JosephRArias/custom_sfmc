@@ -31,15 +31,18 @@ app.post("/execute", async (req, res) => {
       IdOT = inArgument;
       sendAppointmentConfirmationRequest((response) => {
         confirmacion = response;
-        if (confirmacion == 1) {
+        if (confirmacion == 0) {
           return res.status(200).send({
             confirmacion: confirmacion,
-            branchResult: "no confirmada",
+            branchResult: "confirmada",
           });
         } else {
           return res
             .status(200)
-            .send({ confirmacion: confirmacion, branchResult: "confirmada" });
+            .send({
+              confirmacion: confirmacion,
+              branchResult: "no confirmada",
+            });
         }
       });
     });
