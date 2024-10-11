@@ -25,6 +25,7 @@ app.use("/", indexRouter);
 
 app.post("/execute", async (req, res) => {
   request = req.body;
+  console.log(request);
   sendTokenRequest((response) => {
     token = response;
     getInArgumentRequest((inArgument) => {
@@ -37,12 +38,10 @@ app.post("/execute", async (req, res) => {
             branchResult: "confirmada",
           });
         } else {
-          return res
-            .status(200)
-            .send({
-              confirmacion: confirmacion,
-              branchResult: "no confirmada",
-            });
+          return res.status(200).send({
+            confirmacion: confirmacion,
+            branchResult: "no confirmada",
+          });
         }
       });
     });
