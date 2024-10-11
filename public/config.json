@@ -13,7 +13,7 @@
       "inArguments": [
         {
           "ContactKey": "{{Contact.Key}}",
-          "OrdenTrabajo": "{{Contact.Attribute.\"WA_Unificado_Sends\".OrdenTrabajo}}"
+          "OrdenTrabajo": "{{Contact.Attribute.\"Confirmaciones API\".OrdenTrabajo}}"
         }
       ],
       "outArguments": [
