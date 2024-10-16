@@ -13,7 +13,7 @@
       "inArguments": [
         {
           "ContactKey": "{{Contact.Key}}",
-          "OrdenTrabajo": "{{Contact.Attribute.\"WA_Unificado_Sends\".OrdenTrabajo}}"
+          "OrdenTrabajo": "{{Contact.Attribute.\"Confirmaciones API\".OrdenTrabajo}}"
         }
       ],
       "outArguments": [
@@ -23,19 +23,19 @@
       ],
       "timeout": 100000,
       "retryCount": 6,
-      "url": "https://customsfmc-production.up.railway.app/execute"
+      "url": "https://marketingservices.totalplay.com.mx/Git/custom_sfmc/execute"
     }
   },
   "configurationArguments": {
     "applicationExtensionKey": "61defa1a-0a63-4f8f-b81c-5d4f5aa1d13e",
     "publish": {
-      "url": "https://customsfmc-production.up.railway.app/publish"
+      "url": "https://marketingservices.totalplay.com.mx/Git/custom_sfmc/publish"
     },
     "save": {
-      "url": "https://customsfmc-production.up.railway.app/save"
+      "url": "https://marketingservices.totalplay.com.mx/Git/custom_sfmc/save"
     },
     "validate": {
-      "url": "https://customsfmc-production.up.railway.app/validate"
+      "url": "https://marketingservices.totalplay.com.mx/Git/custom_sfmc/validate"
     }
   },
   "outcomes": [

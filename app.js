@@ -3,7 +3,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 const querystring = require("querystring");
 let axios = require("axios");
-
+require("dotenv").config({ path: "propt.env" });
 var indexRouter = require("./routes/index");
 var tokenURL = process.env.authenticationURL;
 var user = process.env.username;
