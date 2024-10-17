@@ -23,19 +23,19 @@
       ],
       "timeout": 100000,
       "retryCount": 6,
-      "url": "https://marketingservices.totalplay.com.mx/Git/custom_sfmc/execute"
+      "url": "https://marketingservices.totalplay.com.mx/custom/execute"
     }
   },
   "configurationArguments": {
     "applicationExtensionKey": "53edb6cb-25a1-4114-b4bf-00079afb6b78",
     "publish": {
-      "url": "https://marketingservices.totalplay.com.mx/Git/custom_sfmc/publish"
+      "url": "https://marketingservices.totalplay.com.mx/custom/publish"
     },
     "save": {
-      "url": "https://marketingservices.totalplay.com.mx/Git/custom_sfmc/save"
+      "url": "https://marketingservices.totalplay.com.mx/custom/save"
     },
     "validate": {
-      "url": "https://marketingservices.totalplay.com.mx/Git/custom_sfmc/validate"
+      "url": "https://marketingservices.totalplay.com.mx/custom/validate"
     }
   },
   "outcomes": [
