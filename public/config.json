@@ -23,19 +23,19 @@
       ],
       "timeout": 100000,
       "retryCount": 6,
-      "url": "https://marketingservices.totalplay.com.mx/custom_sfmc/execute"
+      "url": "https://customsfmc-production.up.railway.app/execute"
     }
   },
   "configurationArguments": {
-    "applicationExtensionKey": "53edb6cb-25a1-4114-b4bf-00079afb6b78",
+    "applicationExtensionKey": "61defa1a-0a63-4f8f-b81c-5d4f5aa1d13e",
     "publish": {
-      "url": "https://marketingservices.totalplay.com.mx/custom_sfmc/publish"
+      "url": "https://customsfmc-production.up.railway.app/publish"
     },
     "save": {
-      "url": "https://marketingservices.totalplay.com.mx/custom_sfmc/save"
+      "url": "https://customsfmc-production.up.railway.app/save"
     },
     "validate": {
-      "url": "https://marketingservices.totalplay.com.mx/custom_sfmc/validate"
+      "url": "https://customsfmc-production.up.railway.app/validate"
     }
   },
   "outcomes": [
