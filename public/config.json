@@ -27,7 +27,7 @@
     }
   },
   "configurationArguments": {
-    "applicationExtensionKey": "61defa1a-0a63-4f8f-b81c-5d4f5aa1d13e",
+    "applicationExtensionKey": "53edb6cb-25a1-4114-b4bf-00079afb6b78",
     "publish": {
       "url": "https://customsfmc-production.up.railway.app/publish"
     },
